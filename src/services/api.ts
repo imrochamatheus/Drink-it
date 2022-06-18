@@ -1,5 +1,6 @@
-import axios from "axios";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
-export const api = axios.create({
-  baseURL: "www.thecocktaildb.com/api/json/v1/1",
-});
+const config: AxiosRequestConfig = {
+  baseURL: "https://www.thecocktaildb.com/api/json/v1/1",
+};
+export const api: AxiosInstance = axios.create(config);
