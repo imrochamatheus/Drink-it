@@ -25,7 +25,7 @@ const DesktopNav = () => {
           <PopoverTrigger>
             <Link
               p={2}
-              fontSize={"sm"}
+              fontSize={"lg"}
               fontWeight={500}
               color={linkColor}
               _hover={{
