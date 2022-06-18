@@ -9,6 +9,7 @@ import {
 } from "@chakra-ui/react";
 
 import { ChevronRightIcon } from "@chakra-ui/icons";
+import { useDrinks } from "../../../providers/DrinksProvider";
 
 interface NavItem {
   label: string;
@@ -18,6 +19,8 @@ interface NavItem {
 }
 
 const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+  const { getByCategory } = useDrinks();
+
   return (
     <Link
       href={href}
@@ -26,6 +29,7 @@ const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
       p={2}
       rounded={"md"}
       _hover={{ bg: useColorModeValue("pink.50", "gray.900") }}
+      onClick={() => getByCategory(label)}
     >
       <Stack direction={"row"} align={"center"}>
         <Box>

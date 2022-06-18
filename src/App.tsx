@@ -1,7 +1,13 @@
+import Showcase from "./components/Showcase";
 import WithSubnavigation from "./components/Nav";
 
 function App() {
-  return <WithSubnavigation />;
+  return (
+    <>
+      <WithSubnavigation />
+      <Showcase />
+    </>
+  );
 }
 
 export default App;

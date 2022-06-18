@@ -9,6 +9,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
+import { useDrinks } from "../../../providers/DrinksProvider";
 
 interface NavItem {
   label: string;
@@ -20,6 +21,7 @@ interface NavItem {
 
 const MobileNavItem = ({ label, children, href }: NavItem) => {
   const { isOpen, onToggle } = useDisclosure();
+  const { getByCategory } = useDrinks();
 
   return (
     <Stack spacing={4} onClick={children && onToggle}>
@@ -61,7 +63,13 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
         >
           {children &&
             children.map(({ strCategory }, i) => (
-              <Link key={i} py={2} href="#">
+              <Link
+                key={i}
+                py={2}
+                onClick={() => {
+                  getByCategory(strCategory);
+                }}
+              >
                 {strCategory}
               </Link>
             ))}
