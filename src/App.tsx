@@ -1,9 +1,7 @@
-
+import WithSubnavigation from "./components/Nav";
 
 function App() {
-  return (
-   <h1>Hello</h1>
-  );
+  return <WithSubnavigation />;
 }
 
 export default App;
