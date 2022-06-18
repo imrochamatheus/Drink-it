@@ -13,7 +13,7 @@ interface DrinksProviderProps {
 }
 
 interface DrinksContextData {
-  categories: any;
+  categories: Array<any>;
 }
 
 const DrinksContext = createContext<DrinksContextData>({} as DrinksContextData);
