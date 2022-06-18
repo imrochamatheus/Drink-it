@@ -11,6 +11,7 @@ import {
   Input,
   InputRightElement,
   Button,
+  Heading,
 } from "@chakra-ui/react";
 import { HamburgerIcon, CloseIcon, Search2Icon } from "@chakra-ui/icons";
 import DesktopNav from "./DesktopNav";
@@ -61,7 +62,7 @@ export default function WithSubnavigation() {
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
             fontFamily={"heading"}
           >
-            <Text>Drink</Text>
+            <Heading>Drink</Heading>
             <Text color="pink.500">It</Text>
           </Flex>
         </Flex>
