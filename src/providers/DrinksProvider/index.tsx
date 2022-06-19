@@ -24,6 +24,7 @@ interface DrinksContextData {
   getDetails: any;
   getByName: any;
   searchParameter: string;
+  isLoading: boolean;
 }
 
 interface DrinksProviderProps {
@@ -37,11 +38,17 @@ const DrinksProvider: FC<DrinksProviderProps> = ({
 }: DrinksProviderProps) => {
   const [categories, setCategories] = useState<any>([]);
   const [drinks, setDrinks] = useState<any>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [searchParameter, setSearchParameter] = useState<string>(
     `Resultados para a categoria: "cocktail"`
   );
 
+  const changeIsLoading = (): void => {
+    setIsLoading((currentState) => !currentState);
+  };
+
   useEffect(() => {
+    changeIsLoading();
     api
       .get("/list.php?c=list")
       .then((response: AxiosResponse) => setCategories(response.data.drinks))
@@ -51,11 +58,13 @@ const DrinksProvider: FC<DrinksProviderProps> = ({
       .get("/filter.php?c=cocktail")
       .then((response: AxiosResponse) => {
         setDrinks(response.data.drinks);
+        changeIsLoading();
       })
       .catch((error: AxiosError) => console.log(error));
   }, []);
 
   const getByCategory = useCallback(async (category: string): Promise<void> => {
+    changeIsLoading();
     try {
       const response: AxiosResponse = await api.get(
         `/filter.php?c=${category}`
@@ -64,6 +73,7 @@ const DrinksProvider: FC<DrinksProviderProps> = ({
 
       setSearchParameter(`Resultados para a categoria: "${category}"`);
       setDrinks(filteredDrinks);
+      changeIsLoading();
     } catch (error) {
       console.log(error);
     }
@@ -81,12 +91,14 @@ const DrinksProvider: FC<DrinksProviderProps> = ({
   }, []);
 
   const getByName = useCallback(async (name: string): Promise<any> => {
+    changeIsLoading();
     try {
       const response: AxiosResponse = await api.get(`/search.php?s=${name}`);
       const drink: Drink = response.data.drinks;
 
       setSearchParameter(`Resultados para: "${name}"`);
       setDrinks(drink);
+      changeIsLoading();
     } catch (error) {
       console.log(error);
     }
@@ -101,6 +113,7 @@ const DrinksProvider: FC<DrinksProviderProps> = ({
         getDetails,
         getByName,
         searchParameter,
+        isLoading,
       }}
     >
       {children}
