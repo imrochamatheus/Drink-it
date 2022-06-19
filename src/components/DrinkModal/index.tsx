@@ -11,19 +11,25 @@ import {
   Center,
   Text,
   Divider,
+  Stack,
+  Box,
+  ListIcon,
+  ListItem,
+  List,
 } from "@chakra-ui/react";
 import { FC } from "react";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 
 import { useModal } from "../../providers/ModalProvider";
 
 const DrinkModal: FC<{}> = () => {
-  const { isOpen, onClose, infos } = useModal();
+  const { isOpen, onClose, infos, measures, ingredients } = useModal();
 
   return (
     infos && (
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
         <ModalOverlay />
-        <ModalContent>
+        <ModalContent h="auto">
           <ModalHeader>
             {infos.strDrink}
             <Text fontSize="xs">{infos.strCategory}</Text>
@@ -40,10 +46,33 @@ const DrinkModal: FC<{}> = () => {
               />
             </Center>
             <Divider py={2} />
+            <Stack direction="row" py={4}>
+              <Box>
+                <Text>Ingredient:</Text>
+                <List>
+                  {ingredients.map((ingredient: string, i: number) => (
+                    <ListItem key={i}>
+                      <ListIcon as={ArrowForwardIcon} color="green.500" />
+                      {ingredient}
+                    </ListItem>
+                  ))}
+                </List>
+              </Box>
+              <Divider orientation="vertical" />
+              <Box>
+                <Text>Measure:</Text>
+                <List display="column">
+                  {measures.map((measure: string, i: number) => (
+                    <ListItem key={i}>{measure}</ListItem>
+                  ))}
+                </List>
+              </Box>
+            </Stack>
+            <Text fontSize="lg">Prepare:</Text>
             <Text py={2}>{infos.strInstructions}</Text>
           </ModalBody>
           <ModalFooter>
-            <Button onClick={onClose}>Close</Button>
+            <Button onClick={onClose}>Fechar</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>
