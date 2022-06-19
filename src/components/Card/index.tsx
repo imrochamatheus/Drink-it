@@ -31,52 +31,34 @@ const Card: FC<CardProps> = ({ strDrink, strDrinkThumb, idDrink }) => {
         onOpen();
       })();
     },
-    [getDetails, onOpen, setData]
+    [getDetails, onOpen, setData, idDrink]
   );
 
   return (
-    <Center py={12} onClick={handleClick} cursor="pointer">
+    <Center pt={10} pb={4} onClick={handleClick} cursor="pointer">
       <Tooltip label={strDrink}>
         <Box
           role={"group"}
           p={6}
-          maxW={"280px"}
-          w={"full"}
+          w={"230px"}
           bg={useColorModeValue("white", "gray.800")}
-          boxShadow={"2xl"}
+          boxShadow={"lg"}
           rounded={"lg"}
           pos={"relative"}
           zIndex={1}
+          transform="scale(0.98)"
+          _hover={{
+            transform: "scale(1)",
+          }}
         >
-          <Box
-            rounded={"lg"}
-            mt={-12}
-            pos={"relative"}
-            height={"230px"}
-            _after={{
-              transition: "all .3s ease",
-              content: '""',
-              w: "full",
-              h: "215px",
-              pos: "absolute",
-              top: 5,
-              left: 0,
-              backgroundImage: `url(${strDrinkThumb})`,
-              filter: "blur(20px)",
-              zIndex: -1,
-            }}
-            _groupHover={{
-              _after: {
-                filter: "blur(20px)",
-              },
-            }}
-          >
+          <Box rounded={"lg"} mt={-12} pos={"relative"} height={"180px"}>
             <Image
-              rounded={"lg"}
-              height={230}
+              borderRadius="full"
+              height={180}
               width={282}
               objectFit={"cover"}
               src={strDrinkThumb}
+              boxShadow="lg"
             />
           </Box>
           <Stack pt={10} align={"center"}>
@@ -85,6 +67,7 @@ const Card: FC<CardProps> = ({ strDrink, strDrinkThumb, idDrink }) => {
               fontFamily={"body"}
               fontWeight={500}
               noOfLines={1}
+              color="gray.500"
             >
               {strDrink}
             </Heading>

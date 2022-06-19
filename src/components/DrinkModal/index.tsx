@@ -11,7 +11,6 @@ import {
   Center,
   Text,
   Divider,
-  Heading,
 } from "@chakra-ui/react";
 
 import { useModal } from "../../providers/ModalProvider";
@@ -19,6 +18,7 @@ import { useModal } from "../../providers/ModalProvider";
 function DrinkModal() {
   const { isOpen, onClose, infos } = useModal();
 
+  console.log(infos);
   return (
     infos && (
       <Modal onClose={onClose} isOpen={isOpen} isCentered>

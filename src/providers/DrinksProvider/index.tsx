@@ -22,6 +22,7 @@ interface DrinksContextData {
   getByCategory: any;
   getDetails: any;
   getByName: any;
+  searchParameter: string;
 }
 
 interface DrinksProviderProps {
@@ -33,6 +34,9 @@ const DrinksContext = createContext<DrinksContextData>({} as DrinksContextData);
 const DrinksProvider = ({ children }: DrinksProviderProps) => {
   const [categories, setCategories] = useState<any>([]);
   const [drinks, setDrinks] = useState<any>([]);
+  const [searchParameter, setSearchParameter] = useState<string>(
+    `Resultados para a categoria: "cocktail"`
+  );
 
   useEffect(() => {
     api
@@ -42,7 +46,9 @@ const DrinksProvider = ({ children }: DrinksProviderProps) => {
 
     api
       .get("/filter.php?c=cocktail")
-      .then((response: AxiosResponse) => setDrinks(response.data.drinks))
+      .then((response: AxiosResponse) => {
+        setDrinks(response.data.drinks);
+      })
       .catch((error: AxiosError) => console.log(error));
   }, []);
 
@@ -53,6 +59,7 @@ const DrinksProvider = ({ children }: DrinksProviderProps) => {
       );
       const filteredDrinks: Array<Drink> = response.data.drinks;
 
+      setSearchParameter(`Resultados para a categoria: "${category}"`);
       setDrinks(filteredDrinks);
     } catch (error) {
       console.log(error);
@@ -75,6 +82,7 @@ const DrinksProvider = ({ children }: DrinksProviderProps) => {
       const response: AxiosResponse = await api.get(`/search.php?s=${name}`);
       const drink: Drink = response.data.drinks;
 
+      setSearchParameter(`Resultados para: "${name}"`);
       setDrinks(drink);
     } catch (error) {
       console.log(error);
@@ -83,7 +91,14 @@ const DrinksProvider = ({ children }: DrinksProviderProps) => {
 
   return (
     <DrinksContext.Provider
-      value={{ categories, drinks, getByCategory, getDetails, getByName }}
+      value={{
+        categories,
+        drinks,
+        getByCategory,
+        getDetails,
+        getByName,
+        searchParameter,
+      }}
     >
       {children}
     </DrinksContext.Provider>

@@ -22,7 +22,7 @@ export default function WithSubnavigation() {
         bg={useColorModeValue("black.500", "gray.800")}
         color={useColorModeValue("yellow.500", "white")}
         minH={"60px"}
-        py={{ base: 2 }}
+        py={{ base: 3 }}
         px={{ base: 4 }}
         borderBottom={1}
         borderStyle={"solid"}
