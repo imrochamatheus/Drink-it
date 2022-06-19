@@ -21,6 +21,7 @@ interface DrinksContextData {
   drinks: Array<Drink>;
   getByCategory: any;
   getDetails: any;
+  getByName: any;
 }
 
 interface DrinksProviderProps {
@@ -69,9 +70,20 @@ const DrinksProvider = ({ children }: DrinksProviderProps) => {
     }
   }, []);
 
+  const getByName = useCallback(async (name: string): Promise<any> => {
+    try {
+      const response: AxiosResponse = await api.get(`/search.php?s=${name}`);
+      const drink: Drink = response.data.drinks;
+
+      setDrinks(drink);
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
     <DrinksContext.Provider
-      value={{ categories, drinks, getByCategory, getDetails }}
+      value={{ categories, drinks, getByCategory, getDetails, getByName }}
     >
       {children}
     </DrinksContext.Provider>

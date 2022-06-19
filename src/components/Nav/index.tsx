@@ -17,10 +17,14 @@ import { HamburgerIcon, CloseIcon, Search2Icon } from "@chakra-ui/icons";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import { useRef, useState } from "react";
+import { useDrinks } from "../../providers/DrinksProvider";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
+  const { getByName } = useDrinks();
+
   const [isFocused, setIsFocused] = useState<Boolean>(false);
+  const [inputValue, setInputValue] = useState<string>("");
 
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -79,9 +83,17 @@ export default function WithSubnavigation() {
             type="text"
             placeholder="Pesquise por um drink"
             ref={inputRef}
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
           />
           <InputRightElement width="4.5rem">
-            <Button aria-label="Search" h="1.75rem" size="sm" mr={-5}>
+            <Button
+              aria-label="Search"
+              h="1.75rem"
+              size="sm"
+              mr={-5}
+              onClick={() => getByName(inputValue)}
+            >
               <Search2Icon />
             </Button>
           </InputRightElement>
