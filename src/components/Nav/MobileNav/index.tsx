@@ -2,8 +2,9 @@ import { Stack, useColorModeValue } from "@chakra-ui/react";
 
 import MobileNavItem from "../MobileNavItem";
 import { useDrinks } from "../../../providers/DrinksProvider";
+import { FC } from "react";
 
-const MobileNav = () => {
+const MobileNav: FC<{}> = () => {
   const { categories } = useDrinks();
 
   return (

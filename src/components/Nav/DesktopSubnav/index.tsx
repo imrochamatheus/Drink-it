@@ -10,15 +10,10 @@ import {
 
 import { ChevronRightIcon } from "@chakra-ui/icons";
 import { useDrinks } from "../../../providers/DrinksProvider";
+import { NavItem } from "../@types";
+import { FC } from "react";
 
-interface NavItem {
-  label: string;
-  subLabel?: string;
-  children?: Array<NavItem>;
-  href?: string;
-}
-
-const DesktopSubNav = ({ label, href, subLabel }: NavItem) => {
+const DesktopSubNav: FC<NavItem> = ({ label, href, subLabel }: NavItem) => {
   const { getByCategory } = useDrinks();
 
   return (

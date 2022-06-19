@@ -10,16 +10,10 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import { useDrinks } from "../../../providers/DrinksProvider";
+import { FC } from "react";
+import { NavItem } from "../@types";
 
-interface NavItem {
-  label: string;
-  subLabel?: string;
-  children?: Array<NavItem>;
-  href?: string;
-  strCategory?: string;
-}
-
-const MobileNavItem = ({ label, children, href }: NavItem) => {
+const MobileNavItem: FC<NavItem> = ({ label, children, href }: NavItem) => {
   const { isOpen, onToggle } = useDisclosure();
   const { getByCategory } = useDrinks();
 

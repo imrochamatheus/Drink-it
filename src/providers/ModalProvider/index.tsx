@@ -1,5 +1,6 @@
 import {
   createContext,
+  FC,
   ReactNode,
   useCallback,
   useContext,
@@ -28,7 +29,9 @@ interface ModalContextData {
 
 const ModalContext = createContext<ModalContextData>({} as ModalContextData);
 
-const ModalProvider = ({ children }: ModalProviderProps) => {
+const ModalProvider: FC<ModalProviderProps> = ({
+  children,
+}: ModalProviderProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [infos, setInfos] = useState<DrinkInfos>({} as DrinkInfos);
 

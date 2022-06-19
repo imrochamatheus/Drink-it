@@ -6,6 +6,7 @@ import {
   useState,
   useEffect,
   useCallback,
+  FC,
 } from "react";
 import { api } from "../../services/api";
 
@@ -31,7 +32,9 @@ interface DrinksProviderProps {
 
 const DrinksContext = createContext<DrinksContextData>({} as DrinksContextData);
 
-const DrinksProvider = ({ children }: DrinksProviderProps) => {
+const DrinksProvider: FC<DrinksProviderProps> = ({
+  children,
+}: DrinksProviderProps) => {
   const [categories, setCategories] = useState<any>([]);
   const [drinks, setDrinks] = useState<any>([]);
   const [searchParameter, setSearchParameter] = useState<string>(

@@ -7,11 +7,12 @@ import {
   PopoverContent,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { FC } from "react";
 
 import { useDrinks } from "../../../providers/DrinksProvider";
 import DesktopSubNav from "../DesktopSubnav";
 
-const DesktopNav = () => {
+const DesktopNav: FC<{}> = () => {
   const linkColor = useColorModeValue("yelllow.500", "gray.200");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 

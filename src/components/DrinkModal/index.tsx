@@ -12,13 +12,13 @@ import {
   Text,
   Divider,
 } from "@chakra-ui/react";
+import { FC } from "react";
 
 import { useModal } from "../../providers/ModalProvider";
 
-function DrinkModal() {
+const DrinkModal: FC<{}> = () => {
   const { isOpen, onClose, infos } = useModal();
 
-  console.log(infos);
   return (
     infos && (
       <Modal onClose={onClose} isOpen={isOpen} isCentered>
@@ -49,6 +49,6 @@ function DrinkModal() {
       </Modal>
     )
   );
-}
+};
 
 export default DrinkModal;
