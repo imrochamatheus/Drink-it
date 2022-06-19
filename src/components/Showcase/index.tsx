@@ -14,7 +14,7 @@ const Showcase: FC = () => {
   const { drinks } = useDrinks();
 
   return (
-    <Center>
+    <Center bg="yellow.300">
       <Wrap direction={{ base: "column", md: "row" }} justify="center">
         {drinks &&
           drinks.map(({ strDrink, strDrinkThumb, idDrink }: CardProps) => (

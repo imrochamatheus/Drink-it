@@ -7,27 +7,47 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
+  Image,
+  Center,
+  Text,
+  Divider,
+  Heading,
 } from "@chakra-ui/react";
 
 import { useModal } from "../../providers/ModalProvider";
 
 function DrinkModal() {
-  const { isOpen, onClose } = useModal();
+  const { isOpen, onClose, infos } = useModal();
 
   return (
-    <Modal onClose={onClose} isOpen={isOpen} isCentered>
-      <ModalOverlay />
-      <ModalContent>
-        <ModalHeader>Modal Title</ModalHeader>
-        <ModalCloseButton />
-        <ModalBody>
-          <p>Hello</p>
-        </ModalBody>
-        <ModalFooter>
-          <Button onClick={onClose}>Close</Button>
-        </ModalFooter>
-      </ModalContent>
-    </Modal>
+    infos && (
+      <Modal onClose={onClose} isOpen={isOpen} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>
+            {infos.strDrink}
+            <Text fontSize="xs">{infos.strCategory}</Text>
+          </ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <Center>
+              <Image
+                rounded={"lg"}
+                height={230}
+                width={282}
+                objectFit={"cover"}
+                src={infos.strDrinkThumb}
+              />
+            </Center>
+            <Divider py={2} />
+            <Text py={2}>{infos.strInstructions}</Text>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={onClose}>Close</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    )
   );
 }
 

@@ -8,7 +8,9 @@ import {
   Tooltip,
 } from "@chakra-ui/react";
 
-import { FC } from "react";
+import { FC, MouseEvent, useCallback } from "react";
+import { useDrinks } from "../../providers/DrinksProvider";
+import { useModal } from "../../providers/ModalProvider";
 
 interface CardProps {
   strDrink: string;
@@ -17,8 +19,23 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ strDrink, strDrinkThumb, idDrink }) => {
+  const { onOpen, setData } = useModal();
+  const { getDetails } = useDrinks();
+
+  const handleClick = useCallback(
+    (event: MouseEvent | TouchEvent): void => {
+      (async () => {
+        const drinkInfos = await getDetails(idDrink);
+
+        setData(drinkInfos);
+        onOpen();
+      })();
+    },
+    [getDetails, onOpen, setData]
+  );
+
   return (
-    <Center py={12}>
+    <Center py={12} onClick={handleClick} cursor="pointer">
       <Tooltip label={strDrink}>
         <Box
           role={"group"}
