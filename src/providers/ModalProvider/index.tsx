@@ -1,4 +1,4 @@
-import { createContext, ReactNode } from "react";
+import { createContext, ReactNode, useContext } from "react";
 import { useDisclosure } from "@chakra-ui/react";
 
 interface ModalProviderProps {
@@ -22,5 +22,7 @@ const ModalProvider = ({ children }: ModalProviderProps) => {
     </ModalContext.Provider>
   );
 };
+
+export const useModal = () => useContext(ModalContext);
 
 export default ModalProvider;
