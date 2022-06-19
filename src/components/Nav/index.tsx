@@ -7,37 +7,20 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
-  InputGroup,
-  Input,
-  InputRightElement,
-  Button,
   Heading,
 } from "@chakra-ui/react";
-import { HamburgerIcon, CloseIcon, Search2Icon } from "@chakra-ui/icons";
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
-import { useRef, useState } from "react";
-import { useDrinks } from "../../providers/DrinksProvider";
+import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
-  const { getByName } = useDrinks();
-
-  const [isFocused, setIsFocused] = useState<Boolean>(false);
-  const [inputValue, setInputValue] = useState<string>("");
-
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  const handleFocused = () => {
-    setIsFocused(true);
-    inputRef.current?.focus();
-  };
 
   return (
     <Box>
       <Flex
-        bg={useColorModeValue("white", "gray.800")}
-        color={useColorModeValue("gray.600", "white")}
+        bg={useColorModeValue("black.500", "gray.800")}
+        color={useColorModeValue("yellow.500", "white")}
         minH={"60px"}
         py={{ base: 2 }}
         px={{ base: 4 }}
@@ -66,38 +49,11 @@ export default function WithSubnavigation() {
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
             fontFamily={"heading"}
           >
-            <Heading>Drink</Heading>
+            <Heading color="white.500">Drink</Heading>
             <Text color="pink.500">It</Text>
           </Flex>
         </Flex>
-        <InputGroup
-          size="md"
-          maxW="15rem"
-          flex={{ base: isFocused ? 1 : 0 }}
-          onFocusCapture={handleFocused}
-          onBlur={() => setIsFocused(false)}
-          onMouseOver={handleFocused}
-        >
-          <Input
-            pr="2rem"
-            type="text"
-            placeholder="Pesquise por um drink"
-            ref={inputRef}
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-          />
-          <InputRightElement width="4.5rem">
-            <Button
-              aria-label="Search"
-              h="1.75rem"
-              size="sm"
-              mr={-5}
-              onClick={() => getByName(inputValue)}
-            >
-              <Search2Icon />
-            </Button>
-          </InputRightElement>
-        </InputGroup>
+
         <Flex display={{ base: "none", md: "flex" }} ml={10}>
           <DesktopNav />
         </Flex>

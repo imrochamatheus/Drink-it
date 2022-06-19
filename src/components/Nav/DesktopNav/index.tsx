@@ -12,8 +12,7 @@ import { useDrinks } from "../../../providers/DrinksProvider";
 import DesktopSubNav from "../DesktopSubnav";
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue("gray.600", "gray.200");
-  const linkHoverColor = useColorModeValue("gray.800", "white");
+  const linkColor = useColorModeValue("yelllow.500", "gray.200");
   const popoverContentBgColor = useColorModeValue("white", "gray.800");
 
   const { categories } = useDrinks();
@@ -30,7 +29,6 @@ const DesktopNav = () => {
               color={linkColor}
               _hover={{
                 textDecoration: "none",
-                color: linkHoverColor,
               }}
             >
               Categorias
