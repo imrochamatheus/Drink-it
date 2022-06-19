@@ -13,12 +13,14 @@ interface Drink {
   strDrink: string;
   strDrinkThumb?: string;
   idDrink: string;
+  [x: string]: any;
 }
 
 interface DrinksContextData {
   categories: Array<any>;
   drinks: Array<Drink>;
   getByCategory: any;
+  getDetails: any;
 }
 
 interface DrinksProviderProps {
@@ -56,8 +58,21 @@ const DrinksProvider = ({ children }: DrinksProviderProps) => {
     }
   }, []);
 
+  const getDetails = useCallback(async (id: string): Promise<any> => {
+    try {
+      const response: AxiosResponse = await api.get(`/lookup.php?i=${id}`);
+      const drink: Drink = response.data.drinks;
+
+      return drink;
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
-    <DrinksContext.Provider value={{ categories, drinks, getByCategory }}>
+    <DrinksContext.Provider
+      value={{ categories, drinks, getByCategory, getDetails }}
+    >
       {children}
     </DrinksContext.Provider>
   );
