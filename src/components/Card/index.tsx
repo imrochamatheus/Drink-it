@@ -59,10 +59,10 @@ const Card: FC<CardProps> = ({ strDrink, strDrinkThumb, idDrink }) => {
               w: "full",
               h: "full",
               pos: "absolute",
-              top: 5,
+              top: 2,
               left: 0,
               backgroundImage: `url(${strDrinkThumb})`,
-              filter: "blur(15px)",
+              filter: "blur(20px)",
               zIndex: -1,
             }}
             _groupHover={{
