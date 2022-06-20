@@ -20,16 +20,15 @@ const Nav: FC<{}> = () => {
   return (
     <Box>
       <Flex
-        bg={useColorModeValue("black.500", "gray.800")}
-        color={useColorModeValue("yellow.500", "white")}
+        color={useColorModeValue("brown", "white")}
         minH={"60px"}
-        py={{ base: 3 }}
+        py={{ base: 1 }}
         px={{ base: 4 }}
         borderBottom={1}
-        borderStyle={"solid"}
-        borderColor={useColorModeValue("gray.200", "gray.900")}
         align={"center"}
         justify="space-between"
+        maxW={{ base: "100%", md: "1200px" }}
+        mx="auto"
       >
         <Flex
           flex={{ base: 0, md: "auto" }}
@@ -50,8 +49,8 @@ const Nav: FC<{}> = () => {
             textAlign={useBreakpointValue({ base: "center", md: "left" })}
             fontFamily={"heading"}
           >
-            <Heading color="white.500">Drink</Heading>
-            <Text color="pink.500">It</Text>
+            <Heading fontWeight={300}>Drink</Heading>
+            <Text color="#679117">It</Text>
           </Flex>
         </Flex>
 

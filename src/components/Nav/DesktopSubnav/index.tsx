@@ -47,7 +47,7 @@ const DesktopSubNav: FC<NavItem> = ({ label, href, subLabel }: NavItem) => {
           align={"center"}
           flex={1}
         >
-          <Icon color={"yellow.500"} w={5} h={5} as={ChevronRightIcon} />
+          <Icon color="#679117" w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </Link>
