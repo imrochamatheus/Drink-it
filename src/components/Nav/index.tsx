@@ -12,8 +12,9 @@ import {
 import DesktopNav from "./DesktopNav";
 import MobileNav from "./MobileNav";
 import { HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { FC } from "react";
 
-export default function WithSubnavigation() {
+const Nav: FC<{}> = () => {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
@@ -64,4 +65,6 @@ export default function WithSubnavigation() {
       </Collapse>
     </Box>
   );
-}
+};
+
+export default Nav;
