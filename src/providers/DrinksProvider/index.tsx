@@ -1,3 +1,4 @@
+import { useToast } from "@chakra-ui/react";
 import { AxiosError, AxiosResponse } from "axios";
 import {
   createContext,
@@ -39,9 +40,8 @@ const DrinksProvider: FC<DrinksProviderProps> = ({
   const [categories, setCategories] = useState<any>([]);
   const [drinks, setDrinks] = useState<any>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [searchParameter, setSearchParameter] = useState<string>(
-    `Resultados para a categoria: "cocktail"`
-  );
+  const [searchParameter, setSearchParameter] = useState<string>("");
+  const toast = useToast();
 
   const changeIsLoading = (): void => {
     setIsLoading((currentState) => !currentState);
@@ -58,51 +58,71 @@ const DrinksProvider: FC<DrinksProviderProps> = ({
       .get("/filter.php?c=cocktail")
       .then((response: AxiosResponse) => {
         setDrinks(response.data.drinks);
+        setSearchParameter(`Resultados para a categoria: "cocktail"`);
         changeIsLoading();
       })
       .catch((error: AxiosError) => console.log(error));
   }, []);
 
-  const getByCategory = useCallback(async (category: string): Promise<void> => {
-    changeIsLoading();
-    try {
-      const response: AxiosResponse = await api.get(
-        `/filter.php?c=${category}`
-      );
-      const filteredDrinks: Array<Drink> = response.data.drinks;
+  const handleError = useCallback((): any => {
+    return toast({
+      title: "Erro.",
+      description: "Não foi popssível realizar a busca. Tente novamente!",
+      status: "error",
+      duration: 9000,
+      isClosable: true,
+    });
+  }, [toast]);
 
-      setSearchParameter(`Resultados para a categoria: "${category}"`);
-      setDrinks(filteredDrinks);
+  const getByCategory = useCallback(
+    async (category: string): Promise<void> => {
       changeIsLoading();
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+      try {
+        const response: AxiosResponse = await api.get(
+          `/filter.php?c=${category}`
+        );
+        const filteredDrinks: Array<Drink> = response.data.drinks;
 
-  const getDetails = useCallback(async (id: string): Promise<any> => {
-    try {
-      const response: AxiosResponse = await api.get(`/lookup.php?i=${id}`);
-      const drink: Drink = response.data.drinks;
+        setSearchParameter(`Resultados para a categoria: "${category}"`);
+        setDrinks(filteredDrinks);
+        changeIsLoading();
+      } catch (error) {
+        handleError();
+      }
+    },
+    [handleError]
+  );
 
-      return drink;
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+  const getDetails = useCallback(
+    async (id: string): Promise<any> => {
+      try {
+        const response: AxiosResponse = await api.get(`/lookup.php?i=${id}`);
+        const drink: Drink = response.data.drinks;
 
-  const getByName = useCallback(async (name: string): Promise<any> => {
-    changeIsLoading();
-    try {
-      const response: AxiosResponse = await api.get(`/search.php?s=${name}`);
-      const drink: Drink = response.data.drinks;
+        return drink;
+      } catch (error) {
+        handleError();
+      }
+    },
+    [handleError]
+  );
 
-      setSearchParameter(`Resultados para: "${name}"`);
-      setDrinks(drink);
+  const getByName = useCallback(
+    async (name: string): Promise<any> => {
       changeIsLoading();
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+      try {
+        const response: AxiosResponse = await api.get(`/search.php?s=${name}`);
+        const drink: Drink = response.data.drinks;
+
+        setSearchParameter(`Resultados para: "${name}"`);
+        setDrinks(drink);
+        changeIsLoading();
+      } catch (error) {
+        handleError();
+      }
+    },
+    [handleError]
+  );
 
   return (
     <DrinksContext.Provider
