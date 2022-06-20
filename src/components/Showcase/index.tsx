@@ -23,6 +23,7 @@ const Showcase: FC = () => {
         px={4}
         pt={4}
         pb={2}
+        maxH={"auto"}
         bg="transparent"
         maxW={{ base: "100%", md: "1200px" }}
         mx="auto"
@@ -54,7 +55,7 @@ const Showcase: FC = () => {
                     width: "6px",
                   },
                   "&::-webkit-scrollbar-thumb": {
-                    background: "rgba(0,0,0,0.6)",
+                    background: "rgba(0,0,0,0.2)",
                     borderRadius: "24px",
                   },
                 }}

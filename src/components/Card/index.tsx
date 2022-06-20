@@ -35,21 +35,20 @@ const Card: FC<CardProps> = ({ strDrink, strDrinkThumb, idDrink }) => {
   );
 
   return (
-    <Center pt={10} pb={4} onClick={handleClick} cursor="pointer">
+    <Center pt={10} pb={12} onClick={handleClick} cursor="pointer">
       <Tooltip label={strDrink}>
         <Box
-          role={"group"}
+          border="1px solid rgba(0, 0, 0, 0.2)"
+          borderTop="none"
           p={6}
           w={"230px"}
-          bg={useColorModeValue("#f2f2f4", "gray.800")}
+          bg={useColorModeValue("white.500", "gray.800")}
           boxShadow={"lg"}
           rounded={"lg"}
+          borderRadius="0 0 8px 8px"
           pos={"relative"}
           zIndex={1}
-          transform="scale(0.98)"
-          _hover={{
-            transform: "scale(1)",
-          }}
+          role={"group"}
         >
           <Box rounded={"lg"} mt={-12} pos={"relative"} height={"180px"}>
             <Image
@@ -59,6 +58,8 @@ const Card: FC<CardProps> = ({ strDrink, strDrinkThumb, idDrink }) => {
               objectFit={"cover"}
               src={strDrinkThumb}
               boxShadow="lg"
+              transform="scale(0.98)"
+              _groupHover={{ transform: "scale(1)" }}
             />
           </Box>
           <Stack pt={10} align={"center"}>
