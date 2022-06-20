@@ -11,5 +11,10 @@ export const theme = extendTheme({
     white: {
       500: "#fafafa",
     },
+    brown: "#47352b",
+  },
+  fonts: {
+    heading: `'Poppins', sans-serif`,
+    body: `'Poppins', sans-serif`,
   },
 });
