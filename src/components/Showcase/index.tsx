@@ -19,10 +19,27 @@ const Showcase: FC = () => {
 
   return (
     (drinks && (
-      <Box px={4} pt={4} pb={2} bg="white.500">
+      <Box
+        px={4}
+        pt={4}
+        pb={2}
+        bg="transparent"
+        maxW={{ base: "100%", md: "1200px" }}
+        mx="auto"
+      >
         {!isLoading ? (
           <Box>
-            <Text fontSize="2xl">{searchParameter}</Text>
+            <Heading
+              pt={4}
+              pb={2}
+              fontWeight={400}
+              fontSize={{ base: "md", sm: "xl" }}
+              lineHeight={"110%"}
+              maxW={"3xl"}
+              color={"black"}
+            >
+              {searchParameter}
+            </Heading>
             <Center>
               <HStack
                 direction={{ base: "column", md: "row" }}
@@ -38,7 +55,7 @@ const Showcase: FC = () => {
                     width: "6px",
                   },
                   "&::-webkit-scrollbar-thumb": {
-                    background: "#ffcc00",
+                    background: "rgba(0,0,0,0.6)",
                     borderRadius: "24px",
                   },
                 }}
@@ -61,10 +78,10 @@ const Showcase: FC = () => {
         )}
       </Box>
     )) || (
-      <Box px={4} bg="white.500" py={{ base: 2, md: 24 }}>
+      <Box px={4} py={{ base: 2, md: 24 }}>
         <Center>
           <Heading
-            fontWeight={600}
+            fontWeight={300}
             fontSize={{ base: "2xl", md: "3xl" }}
             lineHeight={"110%"}
             maxW={"3xl"}
