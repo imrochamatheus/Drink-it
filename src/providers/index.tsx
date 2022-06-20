@@ -1,7 +1,7 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { DrinksProvider } from "./DrinksProvider";
 import { FC, ReactNode } from "react";
-import ModalProvider from "./ModalProvider";
+import DrawerProvider from "./DrawerProvider";
 import { theme } from "../styles/theme";
 
 interface AppProviderProps {
@@ -12,8 +12,8 @@ export const AppProviders: FC<AppProviderProps> = ({
   children,
 }: AppProviderProps) => (
   <DrinksProvider>
-    <ModalProvider>
+    <DrawerProvider>
       <ChakraProvider theme={theme}>{children}</ChakraProvider>
-    </ModalProvider>
+    </DrawerProvider>
   </DrinksProvider>
 );

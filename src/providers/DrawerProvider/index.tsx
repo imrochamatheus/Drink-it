@@ -9,7 +9,7 @@ import {
 } from "react";
 import { useDisclosure } from "@chakra-ui/react";
 
-interface ModalProviderProps {
+interface DrawerContextProps {
   children: ReactNode;
 }
 
@@ -30,11 +30,11 @@ interface ModalContextData {
   setData: (data: DrinkInfos[]) => void;
 }
 
-const ModalContext = createContext<ModalContextData>({} as ModalContextData);
+const DrawerContext = createContext<ModalContextData>({} as ModalContextData);
 
-const ModalProvider: FC<ModalProviderProps> = ({
+const DrawerProvider: FC<DrawerContextProps> = ({
   children,
-}: ModalProviderProps) => {
+}: DrawerContextProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [infos, setInfos] = useState<DrinkInfos>({} as DrinkInfos);
   const [ingredients, setIngredients] = useState<string[]>([]);
@@ -67,14 +67,14 @@ const ModalProvider: FC<ModalProviderProps> = ({
   }, [infos]);
 
   return (
-    <ModalContext.Provider
+    <DrawerContext.Provider
       value={{ isOpen, onOpen, onClose, setData, infos, ingredients, measures }}
     >
       {children}
-    </ModalContext.Provider>
+    </DrawerContext.Provider>
   );
 };
 
-export const useModal = () => useContext(ModalContext);
+export const useDrawer = () => useContext(DrawerContext);
 
-export default ModalProvider;
+export default DrawerProvider;
