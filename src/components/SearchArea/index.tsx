@@ -1,4 +1,3 @@
-// import Head from "next/head";
 import {
   Box,
   Heading,
@@ -12,14 +11,33 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Search2Icon } from "@chakra-ui/icons";
 import { useDrinks } from "../../providers/DrinksProvider";
+import { KeyboardEvent } from "react";
 
 export default function SearchArea() {
   const { getByName } = useDrinks();
-
   const [inputValue, setInputValue] = useState<string>("");
+
+  const handleSearchClick = () => {
+    getByName(inputValue);
+    setInputValue("");
+  };
+
+  const handleOnKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      getByName(inputValue);
+
+      setInputValue("");
+    }
+  };
+
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    const target = event.target as HTMLInputElement;
+
+    setInputValue(target.value);
+  };
 
   return (
     <>
@@ -51,7 +69,8 @@ export default function SearchArea() {
                 placeholder="Pesquise por um drink"
                 value={inputValue}
                 bg="white"
-                onChange={(e) => setInputValue(e.target.value)}
+                onKeyDown={handleOnKeyDown}
+                onChange={handleChange}
               />
               <InputRightElement width="4.5rem">
                 <Button
@@ -59,7 +78,7 @@ export default function SearchArea() {
                   h="1.75rem"
                   size="sm"
                   mr={-5}
-                  onClick={() => getByName(inputValue)}
+                  onClick={handleSearchClick}
                 >
                   <Search2Icon />
                 </Button>
