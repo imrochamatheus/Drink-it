@@ -7,12 +7,21 @@
    🔴Clique para acessar o projeto🔴
   </a>
 </div>
+<h3>🟡 O que essa aplicação é capaz de fazer: </h3>
+<li>Buscar e apresentar como parâmetro de busca todas as categorias disponibilizadas pela API</li>
+<li> Possibilitar ao usuário a busca por drinks através de uma categoria, letra, nome ou palavra-chave</li>
+<li> Exibir os ingredientes e suas respectivas quantidades na composição de um drink pesquisado </li>
+<li> Exibir o modo de preparo de um drink pesquisado/li>
+<li> Tratar o acesso a rotas inexistentes</li>
+<li> Apresentar feedbacks de erro </li>
+<hr/>
 <h3>🟠 Bibliotecas Utilizadas : </h3>
 <ul>
   <li>REACT-APP: yarn create react-app</li>
   <li>CHAKRA-UI : yarn add @chakra-ui/react @emotion/react@^11 @emotion/styled@^11 framer-motion@^6</li>
   <li>CHAKRA-UI ICONS: yarn add @chakra-ui/icons</li>
   <li>REACT-LOTTIE: yarn add react-lottie</li>
+  <li>REACT-ROUTER-DOM: yarn add react-router-dom @types/react-router-dom</li>
 </ul>
 <hr/>
 <h3>🟠 <a href="https://www.thecocktaildb.com/api.php">Clique </a> para acessar a API utilizada </h3>
@@ -20,15 +29,9 @@
 <ul>
   <li>Filtrar por nome: www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita</li>
   <li>Filtrar por categoria : www.thecocktaildb.com/api/json/v1/1/filter.php?c=Cocktail</li>
-  <li>Listar todas as categorias: www.thecocktaildb.com/api/json/v1/1/list.php?c=list</li>
+  <li>Buscar todas as categorias: www.thecocktaildb.com/api/json/v1/1/list.php?c=list</li>
+  <li>Buscar detalhes por id: www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007</li>
 </ul>
-<hr/>
-<h3>🟡 O que essa aplicação é capaz de fazer? </h3>
-<li>Buscar e apresentar como parâmetro de busca todas as categorias disponibilizadas pela API</li>
-<li> Possibilitar ao usuário a busca por drinks através de uma categoria e/ou nome/palavra-chave</li>
-<li> Exibir os ingredientes e suas respectivas quantidades na composição de drink selecionado </li>
-<li> Exibir o modo de preparo de um determinado drink</li>
-<li> Apresentar feedbacks de erro </li>
 <hr/>
 <h3>🟡 Como executar : </h3>
 <li> Após o clone do repositório</li>
