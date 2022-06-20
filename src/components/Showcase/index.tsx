@@ -3,7 +3,7 @@ import { FC } from "react";
 
 import { useDrinks } from "../../providers/DrinksProvider";
 import { Center, HStack, Box, Text, Heading } from "@chakra-ui/react";
-import Loader from "../Loader";
+import Loader from "../Lottie";
 
 import * as drinkLoader from "../../assets/looties/drink-loader.json";
 import * as noResults from "../../assets/looties/no-results.json";
