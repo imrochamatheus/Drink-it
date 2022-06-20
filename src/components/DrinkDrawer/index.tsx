@@ -33,9 +33,7 @@ const DrinkDrawer: FC<{}> = () => {
           <DrawerBody>
             <Center>
               <Image
-                rounded={"md"}
-                // height={230}
-                // width={282}
+                rounded={"full"}
                 width="full"
                 objectFit={"cover"}
                 src={infos.strDrinkThumb}
@@ -44,10 +42,10 @@ const DrinkDrawer: FC<{}> = () => {
             <Divider py={4} />
             <Stack direction="row" py={4}>
               <Box>
-                <Text>Ingredient:</Text>
+                <Text fontWeight={400}>Ingredient:</Text>
                 <List>
                   {ingredients.map((ingredient: string, i: number) => (
-                    <ListItem key={i}>
+                    <ListItem key={i} fontWeight={300}>
                       <ListIcon as={ArrowForwardIcon} color="green.500" />
                       {ingredient}
                     </ListItem>
@@ -56,16 +54,20 @@ const DrinkDrawer: FC<{}> = () => {
               </Box>
               <Divider orientation="vertical" />
               <Box>
-                <Text>Measure:</Text>
+                <Text fontWeight={400}>Measure:</Text>
                 <List display="column">
                   {measures.map((measure: string, i: number) => (
-                    <ListItem key={i}>{measure}</ListItem>
+                    <ListItem key={i} fontWeight={300}>
+                      {measure}
+                    </ListItem>
                   ))}
                 </List>
               </Box>
             </Stack>
             <Text fontSize="lg">Prepare:</Text>
-            <Text py={2}>{infos.strInstructions}</Text>
+            <Text py={2} fontWeight={300}>
+              {infos.strInstructions}
+            </Text>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
