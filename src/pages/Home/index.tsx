@@ -1,7 +1,6 @@
 import { Box } from "@chakra-ui/react";
 import { FC } from "react";
-
-import DrinkModal from "../../components/DrinkModal";
+import DrinkDrawer from "../../components/DrinkDrawer";
 import WithSubnavigation from "../../components/Nav";
 import SearchArea from "../../components/SearchArea";
 import Showcase from "../../components/Showcase";
@@ -12,7 +11,7 @@ const Home: FC<any> = () => {
       <WithSubnavigation />
       <SearchArea />
       <Showcase />
-      <DrinkModal />
+      <DrinkDrawer />
     </Box>
   );
 };
