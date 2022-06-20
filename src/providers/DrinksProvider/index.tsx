@@ -25,7 +25,6 @@ interface DrinksContextData {
   getDetails: any;
   getByName: any;
   searchParameter: string;
-  getByFirstLetter: any;
   isLoading: boolean;
 }
 
@@ -125,27 +124,6 @@ const DrinksProvider: FC<DrinksProviderProps> = ({
     [handleError]
   );
 
-  const getByFirstLetter = useCallback(
-    async (letter: string): Promise<any> => {
-      changeIsLoading();
-      try {
-        const response: AxiosResponse = await api.get(
-          `/search.php?f=${letter}`
-        );
-        const drink: Drink = response.data.drinks;
-
-        setSearchParameter(
-          `Resultados para iniciados com a letra: "${letter}"`
-        );
-        setDrinks(drink);
-        changeIsLoading();
-      } catch (error) {
-        handleError();
-      }
-    },
-    [handleError]
-  );
-
   return (
     <DrinksContext.Provider
       value={{
@@ -153,7 +131,6 @@ const DrinksProvider: FC<DrinksProviderProps> = ({
         drinks,
         getByCategory,
         getDetails,
-        getByFirstLetter,
         getByName,
         searchParameter,
         isLoading,
