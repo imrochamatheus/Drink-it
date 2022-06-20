@@ -24,6 +24,7 @@
 </ul>
 <hr/>
 <h3>🟡 O que essa aplicação é capaz de fazer? </h3>
+<li>Buscar e apresentar como parâmetro de busca todas as categorias disponibilizadas pela API</li>
 <li> Possibilitar ao usuário a busca por drinks através de uma categoria e/ou nome/palavra-chave</li>
 <li> Exibir os ingredientes e suas respectivas quantidades na composição de drink selecionado </li>
 <li> Exibir o modo de preparo de um determinado drink</li>
