@@ -10,7 +10,7 @@ import {
 
 import { FC, MouseEvent, useCallback } from "react";
 import { useDrinks } from "../../providers/DrinksProvider";
-import { useModal } from "../../providers/ModalProvider";
+import { useDrawer } from "../../providers/DrawerProvider";
 
 interface CardProps {
   strDrink: string;
@@ -19,7 +19,7 @@ interface CardProps {
 }
 
 const Card: FC<CardProps> = ({ strDrink, strDrinkThumb, idDrink }) => {
-  const { onOpen, setData } = useModal();
+  const { onOpen, setData } = useDrawer();
   const { getDetails } = useDrinks();
 
   const handleClick = useCallback(
@@ -41,7 +41,7 @@ const Card: FC<CardProps> = ({ strDrink, strDrinkThumb, idDrink }) => {
           role={"group"}
           p={6}
           w={"230px"}
-          bg={useColorModeValue("white", "gray.800")}
+          bg={useColorModeValue("#f2f2f4", "gray.800")}
           boxShadow={"lg"}
           rounded={"lg"}
           pos={"relative"}
@@ -65,9 +65,9 @@ const Card: FC<CardProps> = ({ strDrink, strDrinkThumb, idDrink }) => {
             <Heading
               fontSize={"md"}
               fontFamily={"body"}
-              fontWeight={500}
+              fontWeight={300}
               noOfLines={1}
-              color="gray.500"
+              color="brown"
             >
               {strDrink}
             </Heading>
