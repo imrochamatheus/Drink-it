@@ -11,6 +11,8 @@ import {
   InputRightElement,
 } from "@chakra-ui/react";
 
+import bgDrinks from "../../assets/img/background-drinks.webp";
+
 import { ChangeEvent, useState } from "react";
 import { Search2Icon } from "@chakra-ui/icons";
 import { useDrinks } from "../../providers/DrinksProvider";
@@ -40,9 +42,21 @@ export default function SearchArea() {
   };
 
   return (
-    <>
-      <Container maxW={"100%"} bg="yellow.500">
+    <Box>
+      <Container
+        maxW={"100%"}
+        backgroundImage={`url(${bgDrinks})`}
+        borderRadius="0 0 80px 0"
+        bgSize="cover"
+        bgRepeat="no-repeat"
+        position="relative"
+        px={0}
+      >
         <Stack
+          w="100%"
+          backdropFilter="auto"
+          backdropBrightness="60%"
+          borderRadius="0 0 80px 0"
           as={Box}
           textAlign={"center"}
           spacing={{ base: 8, md: 5 }}
@@ -50,10 +64,11 @@ export default function SearchArea() {
         >
           <Center>
             <Heading
-              fontWeight={600}
+              fontWeight={400}
               fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
               lineHeight={"110%"}
               maxW={"3xl"}
+              color={"white"}
             >
               Faça você mesmo os seus drinks favoritos <br />
               <Text as={"span"} color={"white"}>
@@ -61,7 +76,7 @@ export default function SearchArea() {
               </Text>
             </Heading>
           </Center>
-          <Center>
+          <Center px={4}>
             <InputGroup size="md" maxW="3xl">
               <Input
                 pr="2rem"
@@ -87,6 +102,6 @@ export default function SearchArea() {
           </Center>
         </Stack>
       </Container>
-    </>
+    </Box>
   );
 }
