@@ -30,8 +30,7 @@ const Showcase: FC = () => {
         {!isLoading ? (
           <Box>
             <Heading
-              pt={4}
-              pb={2}
+              py={2}
               fontWeight={400}
               fontSize={{ base: "md", sm: "xl" }}
               lineHeight={"110%"}
