@@ -7,6 +7,10 @@
    🔴Clique para acessar o projeto🔴
   </a>
 </div>
+<h3>Resumo</h3>
+<p>A aplicação consiste numa biblioteca de drinks, através da qual é possível encontrar uma bebida, seus ingredientes com suas respectivas concentrações e o modo de preparo.</p>
+<p>Construída sobre um layout amigável e intuitivo, visa apresentar as informações de maneira simples e agradável, proporcionando ao usuário uma melhor experiência.</p>
+<hr/>
 <h3>🟡 O que essa aplicação é capaz de fazer: </h3>
 <li>Buscar e apresentar como parâmetro de busca todas as categorias disponibilizadas pela API</li>
 <li> Possibilitar ao usuário a busca por drinks através de uma categoria, letra, nome ou palavra-chave</li>
