@@ -25,7 +25,9 @@
 <hr/>
 <h3>🟡 O que essa aplicação é capaz de fazer? </h3>
 <li> Realizar a busca por drinks através de uma categoria e/ou nome/palavra-chave</li>
-<li> Exibir ingredientes e modo de preparo do respectivo drink</li>
+<li> Exibir os ingredientes e suas respectivas quantidades na composição de drink selecionado</li>
+<li> Exibir o modo de preparo de um determinado drink</li>
+<li> Apresentar feedbacks de erro ao usuário</li>
 <hr/>
 <h3>🟡 Como executar : </h3>
 <li> Após o clone do repositório</li>
